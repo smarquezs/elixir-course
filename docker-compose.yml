@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  elixir-app:
+    image: elixir-app
+    tty: true
+    build:
+      context: .
+    volumes:
+      - .:/opt/app
