@@ -7,7 +7,7 @@ defmodule Mates do
     perform({:subtract, x, y})
   end
 
-  def perform(parameters) do
+  defp perform(parameters) do
     {action, x, y} = parameters
 
     if action == :add do
