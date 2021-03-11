@@ -6,6 +6,7 @@ defmodule Mates.CLI do
     str_action = Atom.to_string(action)
 
     IO.puts("El resultado de #{n1} #{str_action} #{n2} es igual a #{result}")
+    System.halt(0)
   end
 
   defp perform_action(action, {n1, n2}) do
