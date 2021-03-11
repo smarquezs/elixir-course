@@ -1,12 +1,13 @@
 defmodule Mates.CLI do
   def start() do
     [n1, n2] = IO.gets("Ingrese dos numeros") |> parse_number_input()
-    action = IO.gets("Ingresa la operación (+ - * /)") |> parse_action()
+    action = IO.gets("Ingresa la operación o q para terminar (+ - * /)") |> parse_action()
     result = perform_action(action, {n1, n2})
     str_action = Atom.to_string(action)
 
     IO.puts("El resultado de #{n1} #{str_action} #{n2} es igual a #{result}")
-    System.halt(0)
+
+    start()
   end
 
   defp perform_action(action, {n1, n2}) do
@@ -15,6 +16,7 @@ defmodule Mates.CLI do
       :- -> Mates.subtract(n1, n2)
       :* -> Mates.multiply(n1, n2)
       :/ -> Mates.divide(n1, n2)
+      :q -> System.halt(0)
     end
   end
 
