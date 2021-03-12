@@ -15,6 +15,11 @@ defmodule Recur do
     [func.(head) | map(tail, func)]
   end
 
+  def filter([], _func), do: []
+  def filter([head | tail], func) do
+    func.(head) && [head | filter(tail, func)] || filter(tail, func)
+  end
+
   def len([]), do: 0
   def len([_head | tail]), do: 1 + len(tail)
 end
