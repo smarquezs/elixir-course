@@ -10,6 +10,9 @@ defmodule Recur do
     end
   end
 
+  def len([]), do: 0
+  def len([_head | tail]), do: 1 + len(tail)
+
   def map([], _func), do: []
   def map([head | tail], func) do
     [func.(head) | map(tail, func)]
@@ -20,6 +23,9 @@ defmodule Recur do
     func.(head) && [head | filter(tail, func)] || filter(tail, func)
   end
 
-  def len([]), do: 0
-  def len([_head | tail]), do: 1 + len(tail)
+  def reduce([], acc, _func), do: acc
+  def reduce([head | tail], acc, func) do
+    new_acc = func.(head, acc)
+    reduce(tail, new_acc, func)
+  end
 end
